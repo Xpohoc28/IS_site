@@ -14,12 +14,13 @@
 <body>
     <aside>
         <img src="{% static 'main/img/logo_simple.svg' %}" alt="Лого">
-        <span class="logo">291 ИБ</span>
+        <span class="logo">291ИБ</span>
         <h3>Навигация</h3>
         <ul>
             <a href="{% url 'home' %}"><li><i class="fa-solid fa-house"></i>Главная</li></a>
+            <a href="{% url 'news' %}"><li><i class="fa-solid fa-newspaper"></i>Новости</li></a>
             <a href="{% url 'about' %}"><li><i class="fa-solid fa-address-card"></i>Про нас</li></a>
-            <a href=""><li><i class="fa-solid fa-address-book"></i>Контакты</li></a>
+            <a href="https://vk.com/zona_ib" target="_blank"><li><i class="fa-solid fa-address-book"></i>Контакты</li></a>
         </ul>
     </aside>
     

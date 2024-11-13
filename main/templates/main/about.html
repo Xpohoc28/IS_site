@@ -1,15 +1,88 @@
 {% extends 'main/layout.html' %}
 
-
 {% block title %}
 Про нас
 {% endblock %}
 
-
 {% block content %}
-    <div class="features">
+{% load static %}
+<div class="features">
     <h1>Про нас</h1>
-    <p>КГУ ФМИ 291гр Информационная Безопасность</p>
-    <button class="btn btn-danger">Просто нажми на меня</button>
-    </div>
+    <p>Мы – студенты 291 группы ФМИ. На этом сайте Вы найдёте новости о наших мероприятиях. А пока Вы можете ознакомиться с командой разработчиков, создавших этот сайт.</p>
+
+    <div class="team-grid">
+        <div class="team-member">
+            <div class="member-photo">
+                <img src="{% static 'main/img/Виктор.png' %}" alt="Фото участника 1" />
+            </div>
+            <div class="member-info">
+                <h3>Чаплыгин Виктор</h3>
+                <p class="description">Наш руководитель</p>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <div class="member-photo">
+                <img src="{% static 'main/img/Иван.png' %}" alt="Фото участника 2" />
+            </div>
+           <div class="member-info">
+                <h3>Дементьев Иван</h3>
+                <p class="description">Мозговой центр</p>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <div class="member-photo">
+                <img src="{% static 'main/img/Максим.png' %}" alt="Фото участника 3" />
+            </div>
+           <div class="member-info">
+                <h3>Воробьев Максим</h3>
+                <p class="description">Крутой спец</p>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <div class="member-photo">
+                <img src="{% static 'main/img/Артемий.png' %}" alt="Фото участника 4" />
+            </div>
+            <div class="member-info">
+                <h3>Здор Артемий</h3>
+                <p class="description">Ответственный за вёрстку</p>
+            </div>
+        </div>
+
+<style>
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.team-member {
+    background: #fff;
+    border-radius: 8px;
+}
+
+.member-photo img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.member-info {
+    padding: 1.5rem;
+}
+
+.member-info h3 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+}
+
+.description {
+    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+</style>
 {% endblock %}

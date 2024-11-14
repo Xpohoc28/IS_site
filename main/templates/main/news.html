@@ -3,44 +3,49 @@
 {% block title %}Главная страница{% endblock %}
 
 {% block content %}
-{% load static %}
+    {% load static %}
 
     <div class="centered-container">
-    <div class="news-section">
-        <h2>Новости</h2>
-        <div class="tabs">
-            <button class="tablinks" onclick="openTab(event, 'upcoming')">Предстоящие</button>
-            <button class="tablinks" onclick="openTab(event, 'past')">Прошедшие</button>
-        </div>
+        <div class="news-section">
+            <h2>Новости</h2>
+            <div class="tabs">
+                <button class="tablinks" onclick="openTab(event, 'upcoming')">Предстоящие</button>
+                <button class="tablinks" onclick="openTab(event, 'past')">Прошедшие</button>
+            </div>
+            {% for el in news %}
+                <div class="alert-warning">
+                    <h3>{{ el.title }}</h3>
+                    <p>{{ el.content }}</p>
+                </div>
+            {% endfor %}
+            <div id="upcoming" class="tabcontent">
+                <h3>Предстоящие события</h3>
+                <ul>
+                    <!-- Здесь будет код для загрузки предстоящих новостей из БД -->
+                    {#
+                    {% for news in upcoming_news %}
+                        <li>{{ news.title }} - {{ news.date }}</li>
+                    {% endfor %}
+                    #}
+                    <li>Пример предстоящего события 1 - 2023-12-01</li>
+                    <li>Пример предстоящего события 2 - 2023-12-15</li>
+                </ul>
+            </div>
 
-        <div id="upcoming" class="tabcontent">
-            <h3>Предстоящие события</h3>
-            <ul>
-                <!-- Здесь будет код для загрузки предстоящих новостей из БД -->
-                {#
-                {% for news in upcoming_news %}
-                    <li>{{ news.title }} - {{ news.date }}</li>
-                {% endfor %}
-                #}
-                <li>Пример предстоящего события 1 - 2023-12-01</li>
-                <li>Пример предстоящего события 2 - 2023-12-15</li>
-            </ul>
+            <div id="past" class="tabcontent" style="display:none">
+                <h3>Прошедшие события</h3>
+                <ul>
+                    <!-- Здесь будет код для загрузки прошедших новостей из БД -->
+                    {#
+                    {% for news in past_news %}
+                        <li>{{ news.title }} - {{ news.date }}</li>
+                    {% endfor %}
+                    #}
+                    <li>Пример прошедшего события 1 - 2023-11-01</li>
+                    <li>Пример прошедшего события 2 - 2023-11-15</li>
+                </ul>
+            </div>
         </div>
-
-        <div id="past" class="tabcontent" style="display:none">
-            <h3>Прошедшие события</h3>
-            <ul>
-                <!-- Здесь будет код для загрузки прошедших новостей из БД -->
-                {#
-                {% for news in past_news %}
-                    <li>{{ news.title }} - {{ news.date }}</li>
-                {% endfor %}
-                #}
-                <li>Пример прошедшего события 1 - 2023-11-01</li>
-                <li>Пример прошедшего события 2 - 2023-11-15</li>
-            </ul>
-        </div>
-    </div>
     </div>
 
     <style>
@@ -53,9 +58,11 @@
             margin-left: auto;
             margin-right: auto;
         }
+
         .tabs {
             margin: 20px 0;
         }
+
         .tablinks {
             cursor: pointer;
             padding: 10px;
@@ -76,6 +83,7 @@
             border: 1px solid #ffffff;
 
         }
+
         /* Новый стиль для центрирования элементов на странице */
         .centered-container {
 
@@ -85,24 +93,33 @@
             width: 80%; /* Занимаем всю ширину */
 
         }
-
+        
         .news-section {
             margin-left: 500px;
             width: 80%; /* Измените это значение по вашему усмотрению */
             max-width: 800px; /* Максимальная ширина для секции новостей */
 
+        {#.alert-warning {#}
+        {#    float: left;#}
+        {#    clear: both;#}
+        {#    width: 400px;#}
+        {#    margin: 20px 34%;#}
+        {#    text-align: left;#}
+        {#    background-color: #ffffff;#}
+        {#}#}
+            aside ul, li, h2, h3 {
+                color: #ffffff;
+            }
 
-        aside ul, li, h2, h3{
-            color: #ffffff;
-        }
+            ul {
+                list-style-type: none; /* Убираем маркеры */
+                padding: 0; /* Убираем отступы по умолчанию */
+            }
 
-        ul {
-            list-style-type: none; /* Убираем маркеры */
-            padding: 0; /* Убираем отступы по умолчанию */
-}       li {
-            margin: 5px 0; /* Добавляем отступы между элементами списка (по желанию) */
-            color: #ffffff; /* Устанавливаем цвет текста для элементов списка */
-}
+            li {
+                margin: 5px 0; /* Добавляем отступы между элементами списка (по желанию) */
+                color: #ffffff; /* Устанавливаем цвет текста для элементов списка */
+            }
         }
     </style>
 
